@@ -1,0 +1,341 @@
+for i,v in pairs(game.ReplicatedStorage.RemoteSecurity:GetChildren()) do
+			v.Name="Noob"..i
+		end
+	local personpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		local playerName = game.Players.LocalPlayer.Name
+		local Waiter = false
+		local player = game.Players.LocalPlayer
+		local uis = game:GetService("UserInputService")
+		local damage = game.ReplicatedStorage.Remotes.Damage
+		local Players = game.Players
+		local LocalPlayer = Players.LocalPlayer;
+		local u2 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait();
+		local HumanoidRootPart = u2:WaitForChild("HumanoidRootPart");
+		local player = game.Players.LocalPlayer
+		local character = player.Character
+		local remote = game.ReplicatedStorage.Remotes.Functions
+		local pass = getrenv()._G.Pass
+		local remote = game.ReplicatedStorage.Remotes["SwordHandler"]
+		local security = game.ReplicatedStorage.RemoteSecurity["Noob382"]
+		local ClientMusicVariable = true
+		local remot = game:GetService("ReplicatedStorage").Remotes.Functions
+		local LeftCombo = 0
+		local TimeToAttack = .09
+		local Delayy = .07
+		local LastComboCD = 0.25
+		local Cooldown = false
+		local remote = game.ReplicatedStorage.Remotes.Damage
+		local UserId = game.Players.LocalPlayer.UserId
+		local LMB2REMOTE = Instance.new("BindableEvent") or game.Players[game.Players.LocalPlayer.Name].Backpack:FindFirstChild("RemoteFolder")[UserId]
+
+		LMB2REMOTE.Name = 'LMB2'
+
+		if not(game.Players[game.Players.LocalPlayer.Name].Backpack:FindFirstChild("RemoteFolder"))then 
+			local NewRemoteFolder = Instance.new("Folder")
+			NewRemoteFolder.Name = "LMBNEARDEATH"
+			NewRemoteFolder.Parent = game.Players[game.Players.LocalPlayer.Name].Backpack
+			LMB2REMOTE.Parent = NewRemoteFolder
+		end
+
+
+		LMB2REMOTE.Event:Connect(function()
+			local gettem = game.Players.LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value
+			tostring(gettem)
+			local epic = game.Workspace[tostring(gettem)]
+			local target = epic.Torso.Position
+			LeftCombo = LeftCombo + 1
+			print(tostring(LeftCombo))
+
+			-- Animations and Attacks
+			if LeftCombo == 1 then
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 0
+				local Anim = Instance.new("Animation")
+				Anim.AnimationId = "rbxassetid://5776857179"
+				local track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+				track:Play();
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Normal",
+						["HitEffect"] = "LightHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Hurt1,
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit,
+						["Damage"] = 10,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 10
+			elseif LeftCombo == 2 then
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 0
+				local Anim = Instance.new("Animation")
+				Anim.AnimationId = "rbxassetid://5770352035"
+				local track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+				track:Play();
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Normal",
+						["HitEffect"] = "KnifeHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Knockback1,
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 10,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 10
+			elseif LeftCombo == 3 then
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 0
+				local Anim = Instance.new("Animation")
+				Anim.AnimationId = "rbxassetid://2286995591"
+				local track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+				track:Play();
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Knockback",
+						["HitEffect"] = "KnifeHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.GutHurt,
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 30,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+			elseif LeftCombo == 4 then
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 0
+				local Anim = Instance.new("Animation")
+				Anim.AnimationId = "rbxassetid://2257945361"
+				local track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+				track:Play();
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Normal",
+						["HitEffect"] = "LightHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.GutHurt, -- Stunned
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 10,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 10
+			elseif LeftCombo == 5 then
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 0
+				local Anim = Instance.new("Animation")
+				Anim.AnimationId = "rbxassetid://4723721463"
+				local track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+				track:Play();
+				track:AdjustSpeed(2)
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Normal",
+						["HitEffect"] = "LightHitEffect3",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Hurt3, -- Stunned
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["VictimCFrame"] = CFrame.new(target),
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 10,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 10
+	
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 10
+			elseif LeftCombo == 6 then
+					local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Knockback",
+						["HitEffect"] = "KnifeHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Hurt3, -- Stunned
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 40,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Knockback",
+						["HitEffect"] = "KnifeHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Hurt3, -- Stunned
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 40,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Knockback",
+						["HitEffect"] = "KnifeHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Hurt3, -- Stunned
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 40,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				local args = {
+					[1] = pass,
+					[2] = game.Workspace[tostring(gettem)],
+					[3] = {
+						["Type"] = "Knockback",
+						["HitEffect"] = "KnifeHitEffect",
+						["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Hurt3, -- Stunned
+						["CameraShake"] = "BigExplosion",
+						["HitTime"] = 0.01,
+						["Sound"] = game:GetService("ReplicatedStorage").Sounds.KnifeHit, -- StarBlazingHit
+						["Damage"] = 40,
+						["CombatInv"] = true
+					}
+				}
+
+				remote:InvokeServer(unpack(args))
+				wait(LastComboCD)
+				LeftCombo = 0
+			elseif LeftCombo == 100 then
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 10
+				LeftCombo = 0
+				print(tostring(LeftCombo)..' Restarted')
+				game:GetService("Players")[LocalPlayer.Name].Backpack.Main.WalkSpeed.Value = 10
+			end
+
+
+
+
+			pcall(function()
+				if LeftCombo == 1 then
+
+					warn('Combo 1 fired')
+					spawn(function()
+						wait(TimeToAttack)
+						if LeftCombo == 1 then
+							LeftCombo = 0
+							warn('Reset LeftCombo 1')
+						end
+					end)
+				elseif LeftCombo == 2 then
+					warn('Combo 2 fired')
+					spawn(function()
+						wait(TimeToAttack)
+						if LeftCombo == 2 then
+							LeftCombo = 0
+							warn('Reset LeftCombo 2')
+						end
+					end)
+				elseif LeftCombo == 3 then
+					warn('Combo 3 fired')
+					spawn(function()
+						wait(TimeToAttack)
+						if LeftCombo == 3 then
+							LeftCombo = 0
+							warn('Reset LeftCombo 3')
+						end
+					end)
+				elseif LeftCombo == 4 then
+					warn('Combo 4 fired')
+					spawn(function()
+						wait(TimeToAttack)
+						if LeftCombo == 4 then
+						    wait(2.5)
+							LeftCombo = 0
+							warn('Reset LeftCombo 4')
+						end
+					end)
+					elseif LeftCombo == 5 then
+					warn('Combo 5 fired')
+					spawn(function()
+						wait(TimeToAttack)
+						if LeftCombo == 5 then
+						    wait(2.5)
+							LeftCombo = 0
+							warn('Reset LeftCombo 5')
+						end
+					end)
+					elseif LeftCombo == 6 then
+					warn('Combo 6 fired')
+					spawn(function()
+						wait(TimeToAttack)
+						if LeftCombo == 6 then
+						    wait(2.5)
+							LeftCombo = 0
+							warn('Reset LeftCombo 6')
+						end
+					end)
+					LeftCombo = 100
+					wait(1.4)
+					LeftCombo = 0
+				end
+			end)
+
+		end)
+
+		local FireAttack = (function()
+			return LMB2REMOTE:Fire()
+		end)
+
+		function checkIfHurt()
+			if not u2:FindFirstChild("Hit") then
+				if not u2:FindFirstChild("Debounce") then
+					if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
+					else
+						return false;
+					end;
+				end;
+			end;
+			return true;
+		end;
+		uis.InputBegan:Connect(function(inp)
+			if inp.UserInputType == Enum.UserInputType.MouseButton1 then
+				if uis:GetFocusedTextBox() == nil then
+					if Cooldown then return end
+					spawn(function()
+						Cooldown = true
+						wait(Delayy)
+						Cooldown = false
+					end)
+
+					FireAttack()
+					warn('Fired Remote')
+				end
+			end;
+		end)
